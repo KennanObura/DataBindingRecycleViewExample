@@ -43,6 +43,8 @@ class MoviesAdapter(
 
     override fun getItemCount(): Int = movie.size
 
+    override fun getItemViewType(position: Int): Int = position
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Picasso.get()
             .load(movie[position].multimedia.src)

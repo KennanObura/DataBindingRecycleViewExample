@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = moviesAdapter
+        recyclerView.hasFixedSize()
 
 
 //        update adapter list
@@ -54,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         moviesAdapter.update(it!!)
     }
 
+    //To be implimented
     private fun movieItemClickListener(movie: Movie) {
 
     }
