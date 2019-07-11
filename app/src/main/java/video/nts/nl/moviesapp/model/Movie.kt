@@ -1,5 +1,9 @@
 package video.nts.nl.moviesapp.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Movie(
     var display_title: String? = null,
     var headline: String? = null,
@@ -10,4 +14,4 @@ data class Movie(
     var critics_pick: Int = 0,
     val multimedia: Multimedia
 
-)
+): Parcelable

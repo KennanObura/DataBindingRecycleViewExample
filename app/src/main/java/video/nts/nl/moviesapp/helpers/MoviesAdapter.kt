@@ -59,8 +59,11 @@ class MoviesAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+
+
         fun bind(item: Movie, binding: MovieItemListBinding, clickListener: (Movie) -> Unit) {
             binding.movieItem = item
+            itemView.setOnClickListener { clickListener(item) }
 
         }
 

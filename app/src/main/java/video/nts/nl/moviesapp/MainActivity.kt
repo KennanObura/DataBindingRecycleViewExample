@@ -3,6 +3,7 @@ package video.nts.nl.moviesapp
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -57,7 +59,9 @@ class MainActivity : AppCompatActivity() {
 
     //To be implimented
     private fun movieItemClickListener(movie: Movie) {
-
+        val intent = Intent(this, MovieDetailActivity::class.java)
+        intent.putExtra(MOVIE_ITEM, movie)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -74,5 +78,9 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    companion object {
+        const val MOVIE_ITEM = "MOVIE_ITEM"
     }
 }
