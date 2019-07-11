@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import video.nts.nl.moviesapp.R
 import video.nts.nl.moviesapp.databinding.MovieItemListBinding
 import video.nts.nl.moviesapp.model.Movie
@@ -23,7 +24,7 @@ class MoviesAdapter(
         movie = item
 
         notifyDataSetChanged()
-        Log.v("List", "${item.size}")
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -43,6 +44,10 @@ class MoviesAdapter(
     override fun getItemCount(): Int = movie.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        Picasso.get()
+            .load(movie[position].multimedia.src)
+            .into(binding.moviesImageView)
+
         holder.bind(movie[position], binding, clickListener)
 
     }
