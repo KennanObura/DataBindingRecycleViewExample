@@ -1,20 +1,60 @@
 package video.nts.nl.moviesapp
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
+import video.nts.nl.moviesapp.helpers.MoviesAdapter
+import video.nts.nl.moviesapp.model.Movie
+import video.nts.nl.moviesapp.modelView.MoviesViewModel
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var moviesViewModel: MoviesViewModel
+    private lateinit var moviesAdapter: MoviesAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
+
+        recyclerView = this.rv_movies
+
+        moviesAdapter = MoviesAdapter(
+            emptyList())
+            {movie: Movie -> movieItemClickListener(movie)}
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = moviesAdapter
+
+
+//        update adapter list
+        moviesViewModel.getMovies()?.observe(this, getMoviesObserver)
+
+
+
+    }
+
+
+    private val getMoviesObserver = Observer<List<Movie>>{
+        moviesAdapter.update(it!!)
+    }
+
+    private fun movieItemClickListener(movie: Movie) {
 
     }
 
