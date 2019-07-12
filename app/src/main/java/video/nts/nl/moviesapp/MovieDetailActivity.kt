@@ -16,6 +16,13 @@ class MovieDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
 
+        //action bar here
+        val actionbar = supportActionBar
+        actionbar?.title = "Review"
+
+//      set back button
+        actionbar!!.setDisplayHomeAsUpEnabled(true)
+
         binding = DataBindingUtil.setContentView(
             this,
             R.layout.activity_movie_detail)

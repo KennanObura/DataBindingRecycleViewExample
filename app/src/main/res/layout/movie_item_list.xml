@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             <TextView
-                    android:text="@={movieItem.publication_date}"
+                    android:text="@string/publication_date"
                     android:textColor="@color/colorAccent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/published_date"
@@ -59,7 +59,7 @@
                     android:layout_marginEnd="28dp" app:layout_constraintEnd_toStartOf="@+id/ratingBar"
             />
             <TextView
-                    android:text="@={movieItem.publication_date}"
+                    android:text="@string/publication_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorTextsSmall"
