@@ -1,4 +1,4 @@
-# moviesapp
+# DataBindingRecycleViewExample
 
 
 moviesapp is a Kotlin app demonstrating
